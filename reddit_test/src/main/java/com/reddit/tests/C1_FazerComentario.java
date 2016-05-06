@@ -15,23 +15,21 @@ import com.reddit.operations.Operations;
  * Senha: testsw
  * */
 
-public class C1_FazerComentario {
+public class C1_FazerComentario extends Operations{
   private WebDriver driver;
-  private String baseUrl;
   private StringBuffer verificationErrors = new StringBuffer();
 
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "https://www.reddit.com/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
   public void testCondiOI() throws Exception {
-    driver.get(baseUrl + "/");
+    driver.get(baseUrl);
     //Fazer login
-    Operations.login(driver);    
+    login(driver);    
     //Simula um click no elemento HTML, no qual, a palavra 'comentário' é o texto da tag 'a'.
     //Botão para ver comentários de um tópico
     driver.findElement(By.partialLinkText("comentário")).click();

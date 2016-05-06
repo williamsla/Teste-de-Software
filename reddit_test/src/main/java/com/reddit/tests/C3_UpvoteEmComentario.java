@@ -1,20 +1,24 @@
 package com.reddit.tests;
 
 import java.util.concurrent.TimeUnit;
+
 import org.junit.*;
+
 import static org.junit.Assert.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class C3_UpvoteEmComentario {
+import com.reddit.operations.Operations;
+
+public class C3_UpvoteEmComentario extends Operations{
   private WebDriver driver;
-  private String baseUrl;
+  
   private StringBuffer verificationErrors = new StringBuffer();
 
   @Before
   public void setUp() throws Exception {
-    driver = new FirefoxDriver();
-    baseUrl = "https://www.reddit.com/";
+    driver = new FirefoxDriver();    
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 

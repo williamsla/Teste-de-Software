@@ -1,30 +1,33 @@
 package com.reddit.tests;
 
 import java.util.concurrent.TimeUnit;
+
 import org.junit.*;
+
 import static org.junit.Assert.*;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class C4_PostarEmSubforum {
+import com.reddit.operations.Operations;
+
+public class C4_PostarEmSubforum extends Operations{
   private WebDriver driver;
-  private String baseUrl;
-  private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
 
   @Before
   public void setUp() throws Exception {
-    driver = new FirefoxDriver();
-    baseUrl = "https://www.reddit.com/";
+    driver = new FirefoxDriver();    
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
   public void testCondiOIV() throws Exception {
-    driver.get(baseUrl + "/");
-    driver.findElement(By.name("q")).click();
-    driver.findElement(By.name("q")).clear();
-    driver.findElement(By.name("q")).sendKeys("music");
+    driver.get(baseUrl);
+    WebElement q=driver.findElement(By.name("q"));
+    q.click();
+    q.clear();
+    q.sendKeys("music");
     driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
   }
 
@@ -34,39 +37,6 @@ public class C4_PostarEmSubforum {
     String verificationErrorString = verificationErrors.toString();
     if (!"".equals(verificationErrorString)) {
       fail(verificationErrorString);
-    }
-  }
-
-  private boolean isElementPresent(By by) {
-    try {
-      driver.findElement(by);
-      return true;
-    } catch (NoSuchElementException e) {
-      return false;
-    }
-  }
-
-  private boolean isAlertPresent() {
-    try {
-      driver.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
-
-  private String closeAlertAndGetItsText() {
-    try {
-      Alert alert = driver.switchTo().alert();
-      String alertText = alert.getText();
-      if (acceptNextAlert) {
-        alert.accept();
-      } else {
-        alert.dismiss();
-      }
-      return alertText;
-    } finally {
-      acceptNextAlert = true;
     }
   }
 }
