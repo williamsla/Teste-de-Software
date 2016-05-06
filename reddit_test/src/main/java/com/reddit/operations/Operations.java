@@ -9,7 +9,7 @@ public class Operations {
 	private static String user = "testsw";
 	private static String passwd = "testsw";
 	
-	public final String baseUrl ="https://www.reddit.com/";
+	public final String baseUrl ="https://www.reddit.com";
 
 	public void login(WebDriver driver){
 		//encontra a caixa de texto para informar o nome do usuário

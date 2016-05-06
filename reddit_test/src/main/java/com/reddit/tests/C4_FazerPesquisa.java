@@ -11,9 +11,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.reddit.operations.Operations;
 
-public class C3_UpvoteEmComentario extends Operations{
+public class C4_FazerPesquisa extends Operations{
   private WebDriver driver;
-  
   private StringBuffer verificationErrors = new StringBuffer();
 
   @Before
@@ -23,9 +22,18 @@ public class C3_UpvoteEmComentario extends Operations{
   }
 
   @Test
-  public void testCondiOIII() throws Exception {
-    driver.get(baseUrl + "/r/worldnews/comments/4ekk9a/uk_jeremy_corbyn_found_to_have_overpaid_tax_after/");
-    driver.findElement(By.xpath("//div[@id='thing_t1_d20zlyw']/div/div")).click();
+  public void testCondiOIV() throws Exception {
+    driver.get(baseUrl);
+    //caixa de pesquisa
+    WebElement q=driver.findElement(By.name("q"));
+    q.click();    
+    q.clear();    
+    //Termo a ser pesquisado
+    q.sendKeys("music");
+    Thread.currentThread().sleep(2000);
+    //Efetua a pesquisa
+    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
+    Thread.currentThread().sleep(5000);
   }
 
   @After

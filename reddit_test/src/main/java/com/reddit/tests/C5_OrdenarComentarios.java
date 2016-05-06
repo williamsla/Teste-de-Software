@@ -24,17 +24,18 @@ public class C5_OrdenarComentarios extends Operations{
   @Test
   public void testCondiOV() throws Exception {
     driver.get(baseUrl + "/r/worldnews/comments/4ekk9a/uk_jeremy_corbyn_found_to_have_overpaid_tax_after/");
-    driver.findElement(By.cssSelector("div.dropdown.lightdrop > span.selected")).click();
+    WebElement element_menu = driver.findElement(By.cssSelector("div.dropdown.lightdrop > span.selected"));
+    element_menu.click();
     driver.findElement(By.linkText("no topo")).click();
-    driver.findElement(By.cssSelector("div.dropdown.lightdrop > span.selected")).click();
+    element_menu.click();
     driver.findElement(By.linkText("melhores")).click();
-    driver.findElement(By.cssSelector("div.dropdown.lightdrop > span.selected")).click();
+    element_menu.click();
     driver.findElement(By.linkText("novos")).click();
-    driver.findElement(By.cssSelector("div.dropdown.lightdrop > span.selected")).click();
+    element_menu.click();
     driver.findElement(By.linkText("controversos")).click();
-    driver.findElement(By.cssSelector("div.dropdown.lightdrop > span.selected")).click();
+    element_menu.click();
     driver.findElement(By.linkText("antigos")).click();
-    driver.findElement(By.cssSelector("div.dropdown.lightdrop > span.selected")).click();
+    element_menu.click();
     driver.findElement(By.linkText("q&a")).click();
   }
 
